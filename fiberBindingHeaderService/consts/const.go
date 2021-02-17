@@ -1,5 +1,7 @@
 package consts
 
 const (
-	DefaultTag = "header"
+	HeaderDefaultTag = "header"
+	BindingTag       = "binding"
+	RequiredValue    = "required"
 )

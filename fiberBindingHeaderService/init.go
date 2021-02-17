@@ -10,11 +10,11 @@ type FiberBindingHeader struct {
 
 func InitFiberBindingHeaderWithTag(tagName string) FiberBindingHeaderInterface {
 	if tagName == "" {
-		tagName = consts.DefaultTag
+		tagName = consts.HeaderDefaultTag
 	}
 	return &FiberBindingHeader{TagName: tagName}
 }
 func InitFiberBindingHeader() FiberBindingHeaderInterface {
 
-	return &FiberBindingHeader{TagName: consts.DefaultTag}
+	return &FiberBindingHeader{TagName: consts.HeaderDefaultTag}
 }
