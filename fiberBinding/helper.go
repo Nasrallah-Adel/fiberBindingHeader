@@ -1,4 +1,4 @@
-package fiberBindingHeaderService
+package fiberBinding
 
 import (
 	"errors"
@@ -6,14 +6,14 @@ import (
 	"strconv"
 )
 
-func (h *FiberBindingHeader) getTypeOfObject(obj interface{}) reflect.Type {
+func getTypeOfObject(obj interface{}) reflect.Type {
 	return reflect.TypeOf(obj).Elem()
 }
 
-func (h *FiberBindingHeader) getValueOfObject(obj interface{}) reflect.Value {
+func getValueOfObject(obj interface{}) reflect.Value {
 	return reflect.ValueOf(obj).Elem()
 }
-func (h *FiberBindingHeader) mapValueToStructFieldType(value string, valueType reflect.Type) (reflect.Value, error) {
+func mapValueToStructFieldType(value string, valueType reflect.Type) (reflect.Value, error) {
 	var result reflect.Value
 	var convertError = errors.New("error parse " + value + " to " + valueType.String())
 	switch valueType.Kind() {

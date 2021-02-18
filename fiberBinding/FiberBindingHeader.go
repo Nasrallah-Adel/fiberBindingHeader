@@ -1,20 +1,21 @@
-package fiberBindingHeaderService
+package fiberBinding
 
 import (
 	"errors"
-	"fiberBindingHeader/fiberBindingHeaderService/consts"
+	"fiberBindingHeader/fiberBinding/consts"
 	"github.com/gofiber/fiber/v2"
 	"reflect"
 )
 
-func (h *FiberBindingHeader) BindFiberHeader(obj interface{}, c *fiber.Ctx) error {
+func BindHeader(obj interface{}, c *fiber.Ctx) error {
+	TagName := consts.HeaderDefaultTag
 	if reflect.TypeOf(obj).Kind() != reflect.Ptr {
 		return errors.New("object must be pointer")
 	}
-	objType := h.getTypeOfObject(obj)
-	objValue := h.getValueOfObject(obj)
+	objType := getTypeOfObject(obj)
+	objValue := getValueOfObject(obj)
 	for i := 0; i < objValue.NumField(); i++ {
-		tagValue := objType.Field(i).Tag.Get(h.TagName)
+		tagValue := objType.Field(i).Tag.Get(TagName)
 		if tagValue != "" {
 			headerValue := c.Get(tagValue)
 
@@ -25,7 +26,7 @@ func (h *FiberBindingHeader) BindFiberHeader(obj interface{}, c *fiber.Ctx) erro
 				}
 
 			} else {
-				fieldValue, err := h.mapValueToStructFieldType(headerValue, objType.Field(i).Type)
+				fieldValue, err := mapValueToStructFieldType(headerValue, objType.Field(i).Type)
 				if err != nil {
 					return err
 				}
