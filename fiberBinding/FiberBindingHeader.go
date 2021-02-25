@@ -2,8 +2,8 @@ package fiberBinding
 
 import (
 	"errors"
-	"fiberBindingHeader/fiberBinding/consts"
 	"github.com/gofiber/fiber/v2"
+	"github.com/nasrallah-adel/fiberBindingHeader/fiberBinding/consts"
 	"reflect"
 )
 
