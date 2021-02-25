@@ -1,4 +1,4 @@
-module fiberBindingHeader
+module github.com/nasrallah-adel/fiberBindingHeader
 
 go 1.15
 
